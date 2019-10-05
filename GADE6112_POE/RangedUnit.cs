@@ -134,6 +134,28 @@ namespace GADE6112_POE
                             posY--;
                         }
                     }
+                    else if (closestUnit is WizardUnit)
+                    {
+                        WizardUnit closestUnitW = (WizardUnit)closestUnit;
+
+                        if (closestUnitW.PosX > posX && PosX < 20)
+                        {
+                            posX++;
+                        }
+                        else if (closestUnitW.PosX < posX && posX > 0)
+                        {
+                            posX--;
+                        }
+
+                        if (closestUnitW.PosY > posY && PosY < 20)
+                        {
+                            posY++;
+                        }
+                        else if (closestUnitW.PosY < posY && posY > 0)
+                        {
+                            posY--;
+                        }
+                    }
                 }
                 else
                 {
@@ -204,7 +226,6 @@ namespace GADE6112_POE
                     posY--;
                 }
             }
-
         }
 
         //Deals damage to closest unit if they are in attack range
@@ -221,6 +242,11 @@ namespace GADE6112_POE
                 {
                     RangedUnit R = (RangedUnit)closestUnit;
                     R.Health -= Attack;
+                }
+                else if (closestUnit is WizardUnit)
+                {
+                    WizardUnit W = (WizardUnit)closestUnit;
+                    W.Health -= Attack;
                 }
             }
             else if (type == 1)
@@ -267,6 +293,14 @@ namespace GADE6112_POE
                 RangedUnit R = (RangedUnit)closestUnit;
                 xDis = Math.Abs((PosX - R.PosX) * (PosX - R.PosX));
                 yDis = Math.Abs((PosY - R.PosY) * (PosY - R.PosY));
+
+                uDistance = (int)Math.Round(Math.Sqrt(xDis + yDis), 0);
+            }
+            else if (closestUnit is WizardUnit)
+            {
+                WizardUnit W = (WizardUnit)closestUnit;
+                xDis = Math.Abs((PosX - W.PosX) * (PosX - W.PosX));
+                yDis = Math.Abs((PosY - W.PosY) * (PosY - W.PosY));
 
                 uDistance = (int)Math.Round(Math.Sqrt(xDis + yDis), 0);
             }
@@ -354,6 +388,18 @@ namespace GADE6112_POE
                 else if (u is MeleeUnit)
                 {
                     MeleeUnit b = (MeleeUnit)u;
+
+                    if (FactionType != b.FactionType)
+                    {
+                        xDis = Math.Abs((PosX - b.PosX) * (PosX - b.PosX));
+                        yDis = Math.Abs((PosY - b.PosY) * (PosY - b.PosY));
+
+                        distance = Math.Round(Math.Sqrt(xDis + yDis), 0);
+                    }
+                }
+                if (u is WizardUnit)
+                {
+                    WizardUnit b = (WizardUnit)u;
 
                     if (FactionType != b.FactionType)
                     {

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace GADE6112_POE
 {
+    //Ryan Kennedy
+    //19013266
 
     [Serializable]
     class WizardUnit : Unit
@@ -262,6 +264,10 @@ namespace GADE6112_POE
 
                         distance = Math.Round(Math.Sqrt(xDis + yDis), 0);
                     }
+                }
+                else if(u is WizardUnit)
+                {
+                    distance = 1000;
                 }
 
 

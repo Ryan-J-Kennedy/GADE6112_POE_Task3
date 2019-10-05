@@ -32,7 +32,7 @@ namespace GADE6112_POE
         static int unitNum = 8;
         static int buildingNum = 6;
 
-        Map m; //= new Map(unitNum, buildingNum, mapHeight, mapWidth);
+        Map m; 
 
         public Form1()
         {
@@ -68,20 +68,7 @@ namespace GADE6112_POE
 
                     if (m.map[x, y] == "R")
                     {
-                        if(m.unitMap[x,y] is MeleeUnit)
-                        {
-                            MeleeUnit M = (MeleeUnit)m.unitMap[x, y];
-                            btn.Text = M.Symbol;
-                            if (M.FactionType == Faction.Dire)
-                            {
-                                btn.BackColor = Color.Red;
-                            }
-                            else
-                            {
-                                btn.BackColor = Color.Green;
-                            }
-                        }
-                        else if(m.unitMap[x,y] is RangedUnit)
+                        if(m.unitMap[x,y] is RangedUnit)
                         {
                             RangedUnit R = (RangedUnit)m.unitMap[x, y];
                             btn.Text = R.Symbol;
@@ -113,19 +100,7 @@ namespace GADE6112_POE
                                 btn.BackColor = Color.Green;
                             }
                         }
-                        else if (m.unitMap[x, y] is RangedUnit)
-                        {
-                            RangedUnit R = (RangedUnit)m.unitMap[x, y];
-                            btn.Text = R.Symbol;
-                            if (R.FactionType == Faction.Dire)
-                            {
-                                btn.BackColor = Color.Red;
-                            }
-                            else
-                            {
-                                btn.BackColor = Color.Green;
-                            }
-                        }
+                        
                         btn.Name = m.unitMap[x, y].ToString();
                         btn.Click += MyButtonClick;
                     }
@@ -367,6 +342,16 @@ namespace GADE6112_POE
                 }
             }
 
+            for (int i = 0; i < m.wizardUnits.Count; i++)
+            {
+                if (m.wizardUnits[i].Death())
+                {
+                    m.map[m.wizardUnits[i].PosX, m.wizardUnits[i].PosY] = "";
+                    m.wizardUnits.RemoveAt(i);
+
+                }
+            }
+
             for (int i = 0; i < m.units.Count; i++)
             {
                 if (m.units[i].Death())
@@ -381,8 +366,12 @@ namespace GADE6112_POE
                         RangedUnit R = (RangedUnit)m.units[i];
                         m.map[R.PosX, R.PosY] = "";
                     }
+                    else if (m.units[i] is WizardUnit)
+                    {
+                        WizardUnit W = (WizardUnit)m.units[i];
+                        m.map[W.PosX, W.PosY] = "";
+                    }
 
-                    
                     m.units.RemoveAt(i);
                 }
             }
@@ -499,15 +488,29 @@ namespace GADE6112_POE
 
         private void btnSetSize_Click(object sender, EventArgs e)
         {
-            mapHeight = Convert.ToInt32(txtHeight.Text);
-            mapWidth = Convert.ToInt32(txtWidth.Text);
+            try
+            {
+                mapHeight = Convert.ToInt32(txtHeight.Text);
+                mapWidth = Convert.ToInt32(txtWidth.Text);
 
-            m = new Map(unitNum, buildingNum, mapHeight, mapWidth);
+                if (mapHeight < 10 || mapWidth < 10)
+                {
+                    MessageBox.Show("Please enter a larger area than 9x9.");
+                }
+                else
+                {
+                    m = new Map(unitNum, buildingNum, mapHeight, mapWidth);
 
-            buttons = new Button[mapWidth, mapHeight];
+                    buttons = new Button[mapWidth, mapHeight];
 
-            m.GenerateBattlefeild();
-            Placebuttons();
+                    m.GenerateBattlefeild();
+                    Placebuttons();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter a valid number.");
+            }
         }
     }
 }

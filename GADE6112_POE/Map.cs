@@ -139,7 +139,7 @@ namespace GADE6112_POE
                     int xPos = rd.Next(0, mapHeight);
                     int yPos = rd.Next(0, mapWidth);
 
-                    while (xPos == mines[i].PosX && yPos == mines[i].PosY && xPos == factories[i].PosX && yPos == factories[i].PosY)
+                    while (xPos == mines[i].PosX && yPos == mines[i].PosY || xPos == factories[i].PosX && yPos == factories[i].PosY)
                     {
                         xPos = rd.Next(0, mapHeight);
                         yPos = rd.Next(0, mapWidth);
@@ -160,7 +160,7 @@ namespace GADE6112_POE
                     int xPos = rd.Next(0, mapHeight);
                     int yPos = rd.Next(0, mapWidth);
 
-                    while (xPos == mines[i].PosX && yPos == mines[i].PosY && xPos == factories[i].PosX && yPos == factories[i].PosY && xPos == wizardUnits[i].PosX && yPos == wizardUnits[i].PosY)
+                    while (xPos == mines[i].PosX && yPos == mines[i].PosY || xPos == factories[i].PosX && yPos == factories[i].PosY || xPos == wizardUnits[i].PosX && yPos == wizardUnits[i].PosY)
                     {
                         xPos = rd.Next(0, mapHeight);
                         yPos = rd.Next(0, mapWidth);
