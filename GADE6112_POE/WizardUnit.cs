@@ -87,7 +87,7 @@ namespace GADE6112_POE
         public override void Move(int type)
         {
             //Moves towards closest enemey
-            if (Health > MaxHealth * 0.25)
+            if (Health > MaxHealth * 0.5)
             {
                 if (closestUnit is MeleeUnit)
                 {
@@ -161,15 +161,82 @@ namespace GADE6112_POE
         //Deals damage to closest unit if they are in attack range
         public override void Combat(int type)
         {
-            if (closestUnit is MeleeUnit)
+            foreach (Unit u in units)
             {
-                MeleeUnit M = (MeleeUnit)closestUnit;
-                M.Health -= Attack;
-            }
-            else if (closestUnit is RangedUnit)
-            {
-                RangedUnit R = (RangedUnit)closestUnit;
-                R.Health -= Attack;
+                if(u is MeleeUnit)
+                {
+                    MeleeUnit M = (MeleeUnit)u;
+
+                    if(M.PosX == PosX - 1 && M.PosY == PosY - 1)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX && M.PosY == PosY - 1)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX + 1 && M.PosY == PosY - 1)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX - 1 && M.PosY == PosY)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX + 1 && M.PosY == PosY)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX - 1 && M.PosY == PosY + 1)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX && M.PosY == PosY + 1)
+                    {
+                        M.Health -= 1;
+                    }
+                    else if (M.PosX == PosX + 1 && M.PosY == PosY + 1)
+                    {
+                        M.Health -= 1;
+                    }
+                }
+                else if (u is MeleeUnit)
+                {
+                    RangedUnit R = (RangedUnit)u;
+
+                    if (R.PosX == PosX - 1 && R.PosY == PosY - 1)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX && R.PosY == PosY - 1)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX + 1 && R.PosY == PosY - 1)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX - 1 && R.PosY == PosY)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX + 1 && R.PosY == PosY)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX - 1 && R.PosY == PosY + 1)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX && R.PosY == PosY + 1)
+                    {
+                        R.Health -= 1;
+                    }
+                    else if (R.PosX == PosX + 1 && R.PosY == PosY + 1)
+                    {
+                        R.Health -= 1;
+                    }
+                }
             }
         }
 
@@ -211,7 +278,7 @@ namespace GADE6112_POE
             }
                 
             //Checks to see if they are below 25% health so they move rather than attacking
-            if (Health > MaxHealth * 0.25)
+            if (Health > MaxHealth * 0.5)
             {
                 if (distance <= AttackRange)
                 {

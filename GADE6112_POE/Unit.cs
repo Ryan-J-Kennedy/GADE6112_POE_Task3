@@ -44,8 +44,6 @@ namespace GADE6112_POE
 
         public abstract Unit ClosestEnemy();
 
-        //public abstract Building ClosestEnemyBuilding();
-
         public abstract bool Death();
 
         public abstract override string ToString();
