@@ -27,6 +27,9 @@ namespace GADE6112_POE
         int mapHeight = 20;
         int mapWidth = 20;
 
+        int direResources = 0;
+        int radientResources = 0;
+
         Button[,] buttons;
 
         static int unitNum = 8;
@@ -131,39 +134,13 @@ namespace GADE6112_POE
                                 btn.BackColor = Color.Green;
                             }
                         }
-                        else if (m.buildingMap[x, y] is ResourceBuilding)
-                        {
-                            ResourceBuilding RB = (ResourceBuilding)m.buildingMap[x, y];
-                            btn.Text = RB.Symbol;
-                            if (RB.FactionType == Faction.Dire)
-                            {
-                                btn.BackColor = Color.Red;
-                            }
-                            else
-                            {
-                                btn.BackColor = Color.Green;
-                            }
-                        }
 
                         btn.Name = m.buildingMap[x, y].ToString();
                         btn.Click += MyButtonClick;
                     }
                     else if (m.map[x,y] == "RB")
                     {
-                        if (m.buildingMap[x, y] is FactoryBuilding)
-                        {
-                            FactoryBuilding FB = (FactoryBuilding)m.buildingMap[x, y];
-                            btn.Text = FB.Symbol;
-                            if (FB.FactionType == Faction.Dire)
-                            {
-                                btn.BackColor = Color.Red;
-                            }
-                            else
-                            {
-                                btn.BackColor = Color.Green;
-                            }
-                        }
-                        else if (m.buildingMap[x, y] is ResourceBuilding)
+                        if (m.buildingMap[x, y] is ResourceBuilding)
                         {
                             ResourceBuilding RB = (ResourceBuilding)m.buildingMap[x, y];
                             btn.Text = RB.Symbol;
@@ -216,8 +193,9 @@ namespace GADE6112_POE
         private void GameTick_Tick(object sender, EventArgs e)
         {
             GameLogic();
-            
 
+            lblDResources.Text = "Dire Resources: " + direResources;
+            lblRResources.Text = "Radient Resources: " + radientResources;
             lblRound.Text = "Round: " + m.round; 
         }
 
@@ -281,14 +259,33 @@ namespace GADE6112_POE
             {
                 foreach (ResourceBuilding RB in m.mines)
                 {
-                    RB.GenerateResource();
+                    if(RB.FactionType == Faction.Dire)
+                    {
+                        direResources += RB.GenerateResource();
+                    }
+                    else if(RB.FactionType == Faction.Radient)
+                    {
+                        radientResources += RB.GenerateResource();
+                    }
                 }
 
                 foreach (FactoryBuilding FB in m.factories)
                 {
-                    if (m.round % FB.SpawnSpeed == 0)
+                    if (FB.FactionType == Faction.Dire && direResources > FB.SpawnCost)
                     {
-                        m.SpawnUnit(FB.SpawnUnit(), FB.SpawnPointX, FB.SpawnPointY, FB.FactionType);
+                        if (m.round % FB.SpawnSpeed == 0)
+                        {
+                            m.SpawnUnit(FB.SpawnUnit(), FB.SpawnPointX, FB.SpawnPointY, FB.FactionType);
+                            direResources -= FB.SpawnCost;
+                        }
+                    }
+                    else if (FB.FactionType == Faction.Radient && radientResources > FB.SpawnCost)
+                    {
+                        if (m.round % FB.SpawnSpeed == 0)
+                        {
+                            m.SpawnUnit(FB.SpawnUnit(), FB.SpawnPointX, FB.SpawnPointY, FB.FactionType);
+                            radientResources -= FB.SpawnCost;
+                        }
                     }
                 }
 
@@ -474,6 +471,7 @@ namespace GADE6112_POE
                     Map mp = (Map)bf.Deserialize(fs);
                     m = mp;
                 }
+
                 mapHeight = m.mapHeight;
                 mapWidth = m.mapWidth;
 

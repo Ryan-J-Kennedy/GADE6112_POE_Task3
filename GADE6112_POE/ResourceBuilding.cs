@@ -37,6 +37,11 @@ namespace GADE6112_POE
             get { return base.factionType; }
         }
 
+        public int ResresourcesGenerated
+        {
+            get { return resourcesGenerated; }
+        }
+
         private ResourceType resource;
         private int resourcesGenerated = 0;
         private int resourcesPerRound;
@@ -51,8 +56,10 @@ namespace GADE6112_POE
         }
 
         //Mines the resources adding them and then removing them from the resources left
-        public void GenerateResource()
+        public int GenerateResource()
         {
+            resourcesGenerated = 0;
+
             if(resourcesRemaining > 10)
             {
                 resourcesGenerated += resourcesPerRound;
@@ -63,7 +70,8 @@ namespace GADE6112_POE
                 resourcesGenerated += resourcesRemaining;
                 resourcesRemaining = 0;
             }
-            
+
+            return resourcesGenerated;
         }
 
         //Returns if the building has more than 0 health of not

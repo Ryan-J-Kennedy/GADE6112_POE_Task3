@@ -61,14 +61,24 @@ namespace GADE6112_POE
             set { spawnPointY = value; }
         }
 
+        private int spawnCost;
+
+        public int SpawnCost
+        {
+            get { return spawnCost; }
+            set { spawnCost = value; }
+        }
+
         private string unitType;
         private int spawnPointX, spawnPointY;
 
-        public FactoryBuilding(int x, int y, int hp, string sym, Faction faction, int sSpeed, string uType)
+        public FactoryBuilding(int x, int y, int hp, string sym, Faction faction, int sSpeed, string uType, int sCost)
             : base(x, y, hp, sym, faction)
         {
             spawnSpeed = sSpeed;
             unitType = uType;
+
+            SpawnCost = sCost;
         }
 
         //Returns what unit needs to be spawned

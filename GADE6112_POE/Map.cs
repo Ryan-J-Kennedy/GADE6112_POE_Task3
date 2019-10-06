@@ -66,7 +66,7 @@ namespace GADE6112_POE
                     unitName = "Melee";
                 }
 
-                FactoryBuilding factory = new FactoryBuilding(0, 0, 100, "|^|", Faction.Dire, rd.Next(3, 10), unitName);
+                FactoryBuilding factory = new FactoryBuilding(0, 0, 100, "|^|", Faction.Dire, rd.Next(3, 10), unitName, rd.Next(50,71));
                 factories.Add(factory);
 
                 ResourceBuilding mine = new ResourceBuilding(0, 0, 100, "|V|", Faction.Dire, rd.Next(3, 10), ResourceType.Gold);
@@ -87,7 +87,7 @@ namespace GADE6112_POE
                     unitName = "Melee";
                 }
 
-                FactoryBuilding factory = new FactoryBuilding(0, 0, 100, "|^|", Faction.Radient, rd.Next(3, 10), unitName);
+                FactoryBuilding factory = new FactoryBuilding(0, 0, 100, "|^|", Faction.Radient, rd.Next(3, 10), unitName, rd.Next(50,71));
                 factories.Add(factory);
 
                 ResourceBuilding mine = new ResourceBuilding(0, 0, 100, "|V|", Faction.Radient, rd.Next(3, 10), ResourceType.Gold);

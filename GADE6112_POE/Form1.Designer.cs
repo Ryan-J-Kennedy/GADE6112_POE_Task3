@@ -40,6 +40,8 @@
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.btnSetSize = new System.Windows.Forms.Button();
+            this.lblDResources = new System.Windows.Forms.Label();
+            this.lblRResources = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblRound
@@ -56,7 +58,7 @@
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(13, 1212);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(148, 67);
             this.btnStart.TabIndex = 1;
@@ -67,7 +69,7 @@
             // txtOutput
             // 
             this.txtOutput.Location = new System.Drawing.Point(1218, 844);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(4);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(434, 398);
             this.txtOutput.TabIndex = 3;
@@ -81,7 +83,7 @@
             // btnPause
             // 
             this.btnPause.Location = new System.Drawing.Point(169, 1212);
-            this.btnPause.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(4);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(148, 67);
             this.btnPause.TabIndex = 4;
@@ -93,9 +95,9 @@
             // 
             this.gbMap.AutoSize = true;
             this.gbMap.Location = new System.Drawing.Point(4, 2);
-            this.gbMap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbMap.Margin = new System.Windows.Forms.Padding(6);
             this.gbMap.Name = "gbMap";
-            this.gbMap.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbMap.Padding = new System.Windows.Forms.Padding(6);
             this.gbMap.Size = new System.Drawing.Size(1204, 1163);
             this.gbMap.TabIndex = 5;
             this.gbMap.TabStop = false;
@@ -104,7 +106,7 @@
             // btnRead
             // 
             this.btnRead.Location = new System.Drawing.Point(1060, 1175);
-            this.btnRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(4);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(148, 67);
             this.btnRead.TabIndex = 6;
@@ -115,7 +117,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(904, 1175);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(148, 67);
             this.btnSave.TabIndex = 7;
@@ -126,7 +128,7 @@
             // txtHeight
             // 
             this.txtHeight.Location = new System.Drawing.Point(1252, 196);
-            this.txtHeight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtHeight.Margin = new System.Windows.Forms.Padding(6);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(196, 31);
             this.txtHeight.TabIndex = 8;
@@ -134,7 +136,7 @@
             // txtWidth
             // 
             this.txtWidth.Location = new System.Drawing.Point(1252, 246);
-            this.txtWidth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtWidth.Margin = new System.Windows.Forms.Padding(6);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(196, 31);
             this.txtWidth.TabIndex = 9;
@@ -142,7 +144,7 @@
             // btnSetSize
             // 
             this.btnSetSize.Location = new System.Drawing.Point(1274, 296);
-            this.btnSetSize.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSetSize.Margin = new System.Windows.Forms.Padding(6);
             this.btnSetSize.Name = "btnSetSize";
             this.btnSetSize.Size = new System.Drawing.Size(150, 44);
             this.btnSetSize.TabIndex = 10;
@@ -150,12 +152,34 @@
             this.btnSetSize.UseVisualStyleBackColor = true;
             this.btnSetSize.Click += new System.EventHandler(this.btnSetSize_Click);
             // 
+            // lblDResources
+            // 
+            this.lblDResources.AutoSize = true;
+            this.lblDResources.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDResources.Location = new System.Drawing.Point(1292, 673);
+            this.lblDResources.Name = "lblDResources";
+            this.lblDResources.Size = new System.Drawing.Size(225, 33);
+            this.lblDResources.TabIndex = 11;
+            this.lblDResources.Text = "Dire Resources:";
+            // 
+            // lblRResources
+            // 
+            this.lblRResources.AutoSize = true;
+            this.lblRResources.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRResources.Location = new System.Drawing.Point(1246, 713);
+            this.lblRResources.Name = "lblRResources";
+            this.lblRResources.Size = new System.Drawing.Size(271, 33);
+            this.lblRResources.TabIndex = 12;
+            this.lblRResources.Text = "Radient Resources:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1662, 1292);
+            this.Controls.Add(this.lblRResources);
+            this.Controls.Add(this.lblDResources);
             this.Controls.Add(this.btnSetSize);
             this.Controls.Add(this.txtWidth);
             this.Controls.Add(this.txtHeight);
@@ -166,7 +190,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblRound);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "RTS Simulation";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -188,6 +212,8 @@
         private System.Windows.Forms.TextBox txtHeight;
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Button btnSetSize;
+        private System.Windows.Forms.Label lblDResources;
+        private System.Windows.Forms.Label lblRResources;
     }
 }
 
