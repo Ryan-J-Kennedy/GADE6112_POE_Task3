@@ -46,19 +46,19 @@
             // 
             this.lblRound.AutoSize = true;
             this.lblRound.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRound.Location = new System.Drawing.Point(644, 31);
-            this.lblRound.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRound.Location = new System.Drawing.Point(1288, 60);
+            this.lblRound.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRound.Name = "lblRound";
-            this.lblRound.Size = new System.Drawing.Size(68, 18);
+            this.lblRound.Size = new System.Drawing.Size(132, 33);
             this.lblRound.TabIndex = 0;
             this.lblRound.Text = "Round: 1";
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 612);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStart.Location = new System.Drawing.Point(13, 1212);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(74, 35);
+            this.btnStart.Size = new System.Drawing.Size(148, 67);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -66,10 +66,10 @@
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(609, 439);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOutput.Location = new System.Drawing.Point(1218, 844);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(219, 209);
+            this.txtOutput.Size = new System.Drawing.Size(434, 398);
             this.txtOutput.TabIndex = 3;
             this.txtOutput.Text = "";
             // 
@@ -80,10 +80,10 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(84, 612);
-            this.btnPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPause.Location = new System.Drawing.Point(169, 1212);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(74, 35);
+            this.btnPause.Size = new System.Drawing.Size(148, 67);
             this.btnPause.TabIndex = 4;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -92,19 +92,21 @@
             // gbMap
             // 
             this.gbMap.AutoSize = true;
-            this.gbMap.Location = new System.Drawing.Point(2, 1);
+            this.gbMap.Location = new System.Drawing.Point(4, 2);
+            this.gbMap.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbMap.Name = "gbMap";
-            this.gbMap.Size = new System.Drawing.Size(602, 605);
+            this.gbMap.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbMap.Size = new System.Drawing.Size(1204, 1163);
             this.gbMap.TabIndex = 5;
             this.gbMap.TabStop = false;
             this.gbMap.Text = "Map";
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(530, 611);
-            this.btnRead.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRead.Location = new System.Drawing.Point(1060, 1175);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(74, 35);
+            this.btnRead.Size = new System.Drawing.Size(148, 67);
             this.btnRead.TabIndex = 6;
             this.btnRead.Text = "Read";
             this.btnRead.UseVisualStyleBackColor = true;
@@ -112,10 +114,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(452, 611);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(904, 1175);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(74, 35);
+            this.btnSave.Size = new System.Drawing.Size(148, 67);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -123,23 +125,26 @@
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(626, 102);
+            this.txtHeight.Location = new System.Drawing.Point(1252, 196);
+            this.txtHeight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new System.Drawing.Size(100, 20);
+            this.txtHeight.Size = new System.Drawing.Size(196, 31);
             this.txtHeight.TabIndex = 8;
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(626, 128);
+            this.txtWidth.Location = new System.Drawing.Point(1252, 246);
+            this.txtWidth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new System.Drawing.Size(100, 20);
+            this.txtWidth.Size = new System.Drawing.Size(196, 31);
             this.txtWidth.TabIndex = 9;
             // 
             // btnSetSize
             // 
-            this.btnSetSize.Location = new System.Drawing.Point(637, 154);
+            this.btnSetSize.Location = new System.Drawing.Point(1274, 296);
+            this.btnSetSize.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSetSize.Name = "btnSetSize";
-            this.btnSetSize.Size = new System.Drawing.Size(75, 23);
+            this.btnSetSize.Size = new System.Drawing.Size(150, 44);
             this.btnSetSize.TabIndex = 10;
             this.btnSetSize.Text = "Set Size";
             this.btnSetSize.UseVisualStyleBackColor = true;
@@ -147,10 +152,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(831, 651);
+            this.ClientSize = new System.Drawing.Size(1662, 1292);
             this.Controls.Add(this.btnSetSize);
             this.Controls.Add(this.txtWidth);
             this.Controls.Add(this.txtHeight);
@@ -161,7 +166,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblRound);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "RTS Simulation";
             this.Load += new System.EventHandler(this.Form1_Load);

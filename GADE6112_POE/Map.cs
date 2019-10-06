@@ -205,14 +205,6 @@ namespace GADE6112_POE
                 }
             }
 
-            //for (int i = 0; i < mapHeight; i++)
-            //{
-            //    for (int j = 0; j < mapWidth; j++)
-            //    {
-            //        unitMap[i, j] = null;
-            //    }
-            //}
-
             foreach (Unit u in units)
             {
                 if(u is RangedUnit)

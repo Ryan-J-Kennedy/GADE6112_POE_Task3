@@ -200,7 +200,7 @@ namespace GADE6112_POE
                         M.Health -= 1;
                     }
                 }
-                else if (u is MeleeUnit)
+                else if (u is RangedUnit)
                 {
                     RangedUnit R = (RangedUnit)u;
 
