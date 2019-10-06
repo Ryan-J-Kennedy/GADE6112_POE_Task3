@@ -85,7 +85,7 @@ namespace GADE6112_POE
         public MeleeUnit(string n, int x, int y, Faction faction, int hp, int sp, int att, int attRange, string sym, bool isAtt)
             : base(n, x, y, hp, sp, att, attRange, sym, faction, isAtt)
         {
-            FactionType = Faction.Neutral;
+
         }
 
         //Changes the x and y position towards the closest enemy or to run away

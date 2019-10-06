@@ -81,10 +81,19 @@ namespace GADE6112_POE
             SpawnCost = sCost;
         }
 
-        //Returns what unit needs to be spawned
-        public string SpawnUnit()
+        //Returns a unit to be spawned
+        public Unit SpawnUnit()
         {
-            return unitType;
+            if (unitType == "Melee")
+            {
+                MeleeUnit knight = new MeleeUnit("Knight", SpawnPointX, SpawnPointY, factionType, 40, 1, 5, 1, "/", false);
+                return knight;
+            }
+            else 
+            {
+                RangedUnit archer = new RangedUnit("Archer", SpawnPointX, SpawnPointY, FactionType, 30, 1, 3, 3, "{|", false);
+                return archer;
+            }
         }
 
         //Returns if the building has more than 0 health of not

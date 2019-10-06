@@ -8,7 +8,9 @@ namespace GADE6112_POE
 {
     //Ryan Kennedy
     //19013266
+    //Task 3
 
+    //Enum for telling the teams apart
     public enum Faction
     {
         Dire,
@@ -16,6 +18,7 @@ namespace GADE6112_POE
         Neutral
     }
 
+    //Enum for the different resource types
     public enum ResourceType
     {
         Gold,
@@ -24,17 +27,22 @@ namespace GADE6112_POE
 
     public partial class Form1 : Form
     {
+        //Variables that can be adjusted by the user to change the map size
         int mapHeight = 20;
         int mapWidth = 20;
 
+        //Variables to indacate how many resources each team has
         int direResources = 0;
         int radientResources = 0;
 
-        Button[,] buttons;
+        //Buttons to represent the map
+        //Button[,] buttons;
 
+        //Variables to adjust how many units and buildings will spawn
         static int unitNum = 8;
         static int buildingNum = 6;
 
+        //Map object
         Map m; 
 
         public Form1()
@@ -47,7 +55,7 @@ namespace GADE6112_POE
         {
             m = new Map(unitNum, buildingNum, 20, 20);
 
-            buttons = new Button[20, 20];
+            //buttons = new Button[20, 20];
 
             m.GenerateBattlefeild();
             Placebuttons();
@@ -64,14 +72,14 @@ namespace GADE6112_POE
             {
                 for (int y = 0; y < mapHeight; y++)
                 {
-                    Button btn = new Button();
-
-                    btn.Size = btnSize;
-                    btn.Location = new Point(x * 30, y * 30);
-
-                    if (m.map[x, y] == "R")
+                    if (m.map[x, y] == "R")//If the string map representation has an 'R' for a ranged unit
                     {
-                        if(m.unitMap[x,y] is RangedUnit)
+                        Button btn = new Button();
+
+                        btn.Size = btnSize;
+                        btn.Location = new Point(x * 30, y * 30);
+
+                        if (m.unitMap[x,y] is RangedUnit)
                         {
                             RangedUnit R = (RangedUnit)m.unitMap[x, y];
                             btn.Text = R.Symbol;
@@ -79,17 +87,22 @@ namespace GADE6112_POE
                             {
                                 btn.BackColor = Color.Red;
                             }
-                            else
+                            else if(R.FactionType == Faction.Radient)
                             {
                                 btn.BackColor = Color.Green;
                             }
+                            btn.Name = m.unitMap[x, y].ToString();
+                            btn.Click += MyButtonClick;
+                            gbMap.Controls.Add(btn);
                         }
-                        
-                        btn.Name = m.unitMap[x, y].ToString();
-                        btn.Click += MyButtonClick;
                     }
-                    else if (m.map[x, y] == "M")
+                    else if (m.map[x, y] == "M")//If the string map representation has an 'M' for a melee unit
                     {
+                        Button btn = new Button();
+
+                        btn.Size = btnSize;
+                        btn.Location = new Point(x * 30, y * 30);
+
                         if (m.unitMap[x, y] is MeleeUnit)
                         {
                             MeleeUnit M = (MeleeUnit)m.unitMap[x, y];
@@ -98,29 +111,41 @@ namespace GADE6112_POE
                             {
                                 btn.BackColor = Color.Red;
                             }
-                            else
+                            else if(M.FactionType == Faction.Radient)
                             {
                                 btn.BackColor = Color.Green;
                             }
+                            btn.Name = m.unitMap[x, y].ToString();
+                            btn.Click += MyButtonClick;
+                            gbMap.Controls.Add(btn);
                         }
-                        
-                        btn.Name = m.unitMap[x, y].ToString();
-                        btn.Click += MyButtonClick;
                     }
-                    else if (m.map[x,y] == "W")
+                    else if (m.map[x,y] == "W")//If the string map representation has an 'W' for a wizard unit
                     {
+                        Button btn = new Button();
+
+                        btn.Size = btnSize;
+                        btn.Location = new Point(x * 30, y * 30);
+
                         if (m.unitMap[x, y] is WizardUnit)
                         {
                             WizardUnit W = (WizardUnit)m.unitMap[x, y];
                             btn.Text = W.Symbol;
 
                             btn.BackColor = Color.Turquoise;
+
+                            btn.Name = m.unitMap[x, y].ToString();
+                            btn.Click += MyButtonClick;
+                            gbMap.Controls.Add(btn);
                         }
-                        btn.Name = m.unitMap[x, y].ToString();
-                        btn.Click += MyButtonClick;
                     }
-                    else if (m.map[x,y] == "FB")
+                    else if (m.map[x,y] == "FB")//If the string map representation has an 'FB' for a factory building
                     {
+                        Button btn = new Button();
+
+                        btn.Size = btnSize;
+                        btn.Location = new Point(x * 30, y * 30);
+
                         if (m.buildingMap[x, y] is FactoryBuilding)
                         {
                             FactoryBuilding FB = (FactoryBuilding)m.buildingMap[x, y];
@@ -129,17 +154,22 @@ namespace GADE6112_POE
                             {
                                 btn.BackColor = Color.Red;
                             }
-                            else
+                            else if(FB.FactionType == Faction.Radient)
                             {
                                 btn.BackColor = Color.Green;
                             }
+                            btn.Name = m.buildingMap[x, y].ToString();
+                            btn.Click += MyButtonClick;
+                            gbMap.Controls.Add(btn);
                         }
-
-                        btn.Name = m.buildingMap[x, y].ToString();
-                        btn.Click += MyButtonClick;
                     }
-                    else if (m.map[x,y] == "RB")
+                    else if (m.map[x,y] == "RB")//If the string map representation has an 'RB' for a resource building
                     {
+                        Button btn = new Button();
+
+                        btn.Size = btnSize;
+                        btn.Location = new Point(x * 30, y * 30);
+
                         if (m.buildingMap[x, y] is ResourceBuilding)
                         {
                             ResourceBuilding RB = (ResourceBuilding)m.buildingMap[x, y];
@@ -148,29 +178,15 @@ namespace GADE6112_POE
                             {
                                 btn.BackColor = Color.Red;
                             }
-                            else
+                            else if(RB.FactionType == Faction.Radient)
                             {
                                 btn.BackColor = Color.Green;
                             }
+                            btn.Name = m.buildingMap[x, y].ToString();
+                            btn.Click += MyButtonClick;
+                            gbMap.Controls.Add(btn);
                         }
-
-                        btn.Name = m.buildingMap[x, y].ToString();
-                        btn.Click += MyButtonClick;
                     }
-                    else
-                    {
-                        btn.Text = "";
-                    }
-
-                    buttons[x,y] = btn;
-                }
-            }
-
-            for (int x = 0; x < mapWidth; x++)
-            {
-                for (int y = 0; y < mapHeight; y++)
-                {
-                    gbMap.Controls.Add(buttons[x, y]);
                 }
             }
         }
@@ -271,11 +287,26 @@ namespace GADE6112_POE
 
                 foreach (FactoryBuilding FB in m.factories)
                 {
+                    Unit u = FB.SpawnUnit();
+
                     if (FB.FactionType == Faction.Dire && direResources > FB.SpawnCost)
                     {
                         if (m.round % FB.SpawnSpeed == 0)
                         {
-                            m.SpawnUnit(FB.SpawnUnit(), FB.SpawnPointX, FB.SpawnPointY, FB.FactionType);
+                            m.units.Add(u);
+
+                            if (u is MeleeUnit)
+                            {
+                                MeleeUnit M = (MeleeUnit)u;
+
+                                m.meleeUnits.Add(M);
+                            }
+                            else if (u is RangedUnit)
+                            {
+                                RangedUnit R = (RangedUnit)u;
+
+                                m.rangedUnits.Add(R);
+                            }
                             direResources -= FB.SpawnCost;
                         }
                     }
@@ -283,7 +314,20 @@ namespace GADE6112_POE
                     {
                         if (m.round % FB.SpawnSpeed == 0)
                         {
-                            m.SpawnUnit(FB.SpawnUnit(), FB.SpawnPointX, FB.SpawnPointY, FB.FactionType);
+                            m.units.Add(u);
+
+                            if (u is MeleeUnit)
+                            {
+                                MeleeUnit M = (MeleeUnit)u;
+
+                                m.meleeUnits.Add(M);
+                            }
+                            else if (u is RangedUnit)
+                            {
+                                RangedUnit R = (RangedUnit)u;
+
+                                m.rangedUnits.Add(R);
+                            }
                             radientResources -= FB.SpawnCost;
                         }
                     }
@@ -502,7 +546,7 @@ namespace GADE6112_POE
                 {
                     m = new Map(unitNum, buildingNum, mapHeight, mapWidth);
 
-                    buttons = new Button[mapWidth, mapHeight];
+                    //buttons = new Button[mapWidth, mapHeight];
 
                     m.GenerateBattlefeild();
                     Placebuttons();

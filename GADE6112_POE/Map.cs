@@ -178,22 +178,6 @@ namespace GADE6112_POE
             PlaceBuildings();
         }
 
-        public void SpawnUnit(string unitType, int x, int y, Faction fac)
-        {
-            if(unitType == "Melee")
-            {
-                MeleeUnit knight = new MeleeUnit("Knight", x, y, fac, 40, 1, 5, 1, "/", false);
-                meleeUnits.Add(knight);
-                units.Add(knight);
-            }
-            else if(unitType == "Ranged")
-            {
-                RangedUnit archer = new RangedUnit("Archer", x, y, fac, 30, 1, 3, 3, "{|", false);
-                rangedUnits.Add(archer);
-                units.Add(archer);
-            }
-        }
-
         //Places the units on a string representation of the 20x20 map
         public void PlaceUnits()
         {
