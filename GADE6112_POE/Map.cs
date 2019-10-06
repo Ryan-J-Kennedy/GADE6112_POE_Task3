@@ -31,8 +31,8 @@ namespace GADE6112_POE
         int buildingNum;
         public int round = 1;
 
-        int mapHeight = 20;
-        int mapWidth = 20;
+        public int mapHeight = 20;
+        public int mapWidth = 20;
 
         //Constructor called with the number of units as a parameter
         public Map(int unitN, int buildingN, int mHight, int mWidth)

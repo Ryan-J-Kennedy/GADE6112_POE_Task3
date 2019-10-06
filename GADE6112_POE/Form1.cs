@@ -474,9 +474,12 @@ namespace GADE6112_POE
                     Map mp = (Map)bf.Deserialize(fs);
                     m = mp;
                 }
+                mapHeight = m.mapHeight;
+                mapWidth = m.mapWidth;
 
                 Placebuttons();
                 lblRound.Text = "Round: " + m.round;
+
 
                 MessageBox.Show("Loading successful");
             }
