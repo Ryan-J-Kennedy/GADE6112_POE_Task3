@@ -74,6 +74,22 @@ namespace GADE6112_POE
             set { base.isAttacking = value; }
         }
 
+        private int mapHeight;
+
+        public int MapHeight
+        {
+            get { return mapHeight; }
+            set { mapHeight = value; }
+        }
+
+        private int mapWidth;
+
+        public int MapWidth
+        {
+            get { return mapWidth; }
+            set { mapWidth = value; }
+        }
+
         private int speedCounter = 1;
         List<Unit> units = new List<Unit>();
         List<Building> buildings = new List<Building>();
@@ -100,7 +116,7 @@ namespace GADE6112_POE
                     {
                         MeleeUnit closestUnitM = (MeleeUnit)closestUnit;
 
-                        if (closestUnitM.PosX > posX && PosX < 20)
+                        if (closestUnitM.PosX > posX && PosX < MapWidth - 1)
                         {
                             posX++;
                         }
@@ -109,7 +125,7 @@ namespace GADE6112_POE
                             posX--;
                         }
 
-                        if (closestUnitM.PosY > posY && PosY < 20)
+                        if (closestUnitM.PosY > posY && PosY < MapHeight - 1)
                         {
                             posY++;
                         }
@@ -122,7 +138,7 @@ namespace GADE6112_POE
                     {
                         RangedUnit closestUnitR = (RangedUnit)closestUnit;
 
-                        if (closestUnitR.PosX > posX && PosX < 20)
+                        if (closestUnitR.PosX > posX && PosX < MapWidth - 1)
                         {
                             posX++;
                         }
@@ -131,7 +147,7 @@ namespace GADE6112_POE
                             posX--;
                         }
 
-                        if (closestUnitR.PosY > posY && PosY < 20)
+                        if (closestUnitR.PosY > posY && PosY < MapHeight - 1)
                         {
                             posY++;
                         }
@@ -144,7 +160,7 @@ namespace GADE6112_POE
                     {
                         WizardUnit closestUnitW = (WizardUnit)closestUnit;
 
-                        if (closestUnitW.PosX > posX && PosX < 20)
+                        if (closestUnitW.PosX > posX && PosX < MapWidth - 1)
                         {
                             posX++;
                         }
@@ -153,7 +169,7 @@ namespace GADE6112_POE
                             posX--;
                         }
 
-                        if (closestUnitW.PosY > posY && PosY < 20)
+                        if (closestUnitW.PosY > posY && PosY < MapHeight - 1)
                         {
                             posY++;
                         }
@@ -169,7 +185,7 @@ namespace GADE6112_POE
                     {
                         FactoryBuilding closestBuildingFB = (FactoryBuilding)closestBuilding;
 
-                        if (closestBuildingFB.PosX > posX && PosX < 20)
+                        if (closestBuildingFB.PosX > posX && PosX < MapHeight - 1)
                         {
                             posX++;
                         }
@@ -178,7 +194,7 @@ namespace GADE6112_POE
                             posX--;
                         }
 
-                        if (closestBuildingFB.PosY > posY && PosY < 20)
+                        if (closestBuildingFB.PosY > posY && PosY < MapWidth - 1)
                         {
                             posY++;
                         }
@@ -191,7 +207,7 @@ namespace GADE6112_POE
                     {
                         ResourceBuilding closestBuildingRB = (ResourceBuilding)closestBuilding;
 
-                        if (closestBuildingRB.PosX > posX && PosX < 19)
+                        if (closestBuildingRB.PosX > posX && PosX < MapHeight - 1)
                         {
                             posX++;
                         }
@@ -200,7 +216,7 @@ namespace GADE6112_POE
                             posX--;
                         }
 
-                        if (closestBuildingRB.PosY > posY && PosY < 19)
+                        if (closestBuildingRB.PosY > posY && PosY < MapWidth - 1)
                         {
                             posY++;
                         }
@@ -215,7 +231,7 @@ namespace GADE6112_POE
             {
                 int direction = r.Next(0, 4);
 
-                if (direction == 0 && PosX < 19)
+                if (direction == 0 && PosX < MapHeight - 1)
                 {
                     posX++;
                 }
@@ -223,7 +239,7 @@ namespace GADE6112_POE
                 {
                     posX--;
                 }
-                else if (direction == 2 && posY < 19)
+                else if (direction == 2 && posY < MapWidth - 1)
                 {
                     posY++;
                 }

@@ -71,6 +71,22 @@ namespace GADE6112_POE
             set { base.isAttacking = value; }
         }
 
+        private int mapHeight;
+
+        public int MapHeight
+        {
+            get { return mapHeight; }
+            set { mapHeight = value; }
+        }
+
+        private int mapWidth;
+
+        public int MapWidth
+        {
+            get { return mapWidth; }
+            set { mapWidth = value; }
+        }
+
         private int speedCounter = 1;
         List<Unit> units = new List<Unit>();
         Random r = new Random();
@@ -89,48 +105,51 @@ namespace GADE6112_POE
             //Moves towards closest enemey
             if (Health > MaxHealth * 0.5)
             {
-                if (closestUnit is MeleeUnit)
+                if (type == 0)
                 {
-                    MeleeUnit closestUnitM = (MeleeUnit)closestUnit;
+                    if (closestUnit is MeleeUnit)
+                    {
+                        MeleeUnit closestUnitM = (MeleeUnit)closestUnit;
 
-                    if (closestUnitM.PosX > posX && PosX < 20)
-                    {
-                        posX++;
-                    }
-                    else if (closestUnitM.PosX < posX && posX > 0)
-                    {
-                        posX--;
-                    }
+                        if (closestUnitM.PosX > posX && PosX < MapWidth - 1)
+                        {
+                            posX++;
+                        }
+                        else if (closestUnitM.PosX < posX && posX > 0)
+                        {
+                            posX--;
+                        }
 
-                    if (closestUnitM.PosY > posY && PosY < 20)
-                    {
-                        posY++;
+                        if (closestUnitM.PosY > posY && PosY < MapHeight - 1)
+                        {
+                            posY++;
+                        }
+                        else if (closestUnitM.PosY < posY && posY > 0)
+                        {
+                            posY--;
+                        }
                     }
-                    else if (closestUnitM.PosY < posY && posY > 0)
+                    else if (closestUnit is RangedUnit)
                     {
-                        posY--;
-                    }
-                }
-                else if (closestUnit is RangedUnit)
-                {
-                    RangedUnit closestUnitR = (RangedUnit)closestUnit;
+                        RangedUnit closestUnitR = (RangedUnit)closestUnit;
 
-                    if (closestUnitR.PosX > posX && PosX < 20)
-                    {
-                        posX++;
-                    }
-                    else if (closestUnitR.PosX < posX && posX > 0)
-                    {
-                        posX--;
-                    }
+                        if (closestUnitR.PosX > posX && PosX < MapWidth - 1)
+                        {
+                            posX++;
+                        }
+                        else if (closestUnitR.PosX < posX && posX > 0)
+                        {
+                            posX--;
+                        }
 
-                    if (closestUnitR.PosY > posY && PosY < 20)
-                    {
-                        posY++;
-                    }
-                    else if (closestUnitR.PosY < posY && posY > 0)
-                    {
-                        posY--;
+                        if (closestUnitR.PosY > posY && PosY < MapHeight - 1)
+                        {
+                            posY++;
+                        }
+                        else if (closestUnitR.PosY < posY && posY > 0)
+                        {
+                            posY--;
+                        }
                     }
                 }
             }
@@ -138,7 +157,7 @@ namespace GADE6112_POE
             {
                 int direction = r.Next(0, 4);
 
-                if (direction == 0 && PosX < 19)
+                if (direction == 0 && PosX < MapHeight - 1)
                 {
                     posX++;
                 }
@@ -146,7 +165,7 @@ namespace GADE6112_POE
                 {
                     posX--;
                 }
-                else if (direction == 2 && posY < 19)
+                else if (direction == 2 && posY < MapWidth - 1)
                 {
                     posY++;
                 }
@@ -155,7 +174,6 @@ namespace GADE6112_POE
                     posY--;
                 }
             }
-
         }
 
         //Deals damage to closest unit if they are in attack range

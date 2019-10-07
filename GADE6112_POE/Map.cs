@@ -97,6 +97,10 @@ namespace GADE6112_POE
             for (int i = 0; i < buildingNum; i++)
             {
                 WizardUnit wizard = new WizardUnit("Wizard", 0, 0, Faction.Neutral, 20, 2, 3, 1, "^", false);
+
+                wizard.MapHeight = mapHeight;
+                wizard.MapWidth = mapWidth;
+
                 wizardUnits.Add(wizard);
             }
 

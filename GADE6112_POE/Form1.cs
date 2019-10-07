@@ -299,12 +299,16 @@ namespace GADE6112_POE
                             {
                                 MeleeUnit M = (MeleeUnit)u;
 
+                                M.MapHeight = mapHeight;
+                                M.MapWidth = mapWidth;
                                 m.meleeUnits.Add(M);
                             }
                             else if (u is RangedUnit)
                             {
                                 RangedUnit R = (RangedUnit)u;
 
+                                R.MapHeight = mapHeight;
+                                R.MapWidth = mapWidth;
                                 m.rangedUnits.Add(R);
                             }
                             direResources -= FB.SpawnCost;
@@ -423,7 +427,6 @@ namespace GADE6112_POE
                 {
                     m.map[m.factories[i].PosX, m.factories[i].PosY] = "";
                     m.factories.RemoveAt(i);
-
                 }
             }
 
@@ -433,7 +436,6 @@ namespace GADE6112_POE
                 {
                     m.map[m.mines[i].PosX, m.mines[i].PosY] = "";
                     m.mines.RemoveAt(i);
-
                 }
             }
 
