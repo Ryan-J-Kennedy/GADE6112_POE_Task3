@@ -548,8 +548,6 @@ namespace GADE6112_POE
                 {
                     m = new Map(unitNum, buildingNum, mapHeight, mapWidth);
 
-                    //buttons = new Button[mapWidth, mapHeight];
-
                     m.GenerateBattlefeild();
                     Placebuttons();
                 }
